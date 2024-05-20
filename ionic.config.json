@@ -1,0 +1,7 @@
+{
+  "name": "Dance Corp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
