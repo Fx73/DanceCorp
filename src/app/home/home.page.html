@@ -20,14 +20,8 @@
 				</ion-card-content>
 			</ion-card>
 		</ion-col>
-		<ion-col>
-			<div *ngIf="isUserLoggedIn(); then accountblock  else loginblock"></div>
-			<ng-template #loginblock>
-				<app-login class="flex-expand"></app-login>
-			</ng-template>
-			<ng-template #accountblock>
-				<app-account class="flex-expand"></app-account>
-			</ng-template>
+		<ion-col *ngIf="!isUserLoggedIn()">
+			<app-login class="flex-expand"></app-login>
 		</ion-col>
 	</ion-row>
 

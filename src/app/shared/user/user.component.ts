@@ -3,10 +3,12 @@ import { IonicModule, PopoverController } from '@ionic/angular';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 import { LoginComponent } from 'src/app/home/login/login.component';
-import { LoginService } from './../../services/login.service';
+import { LoginService } from 'src/app/services/login.service';
 import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { User } from 'firebase/auth';
+import { addIcons } from 'ionicons';
+import { personCircleOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-user',
@@ -27,6 +29,8 @@ export class UserComponent {
   }
 
   constructor(private router: Router, private popoverController: PopoverController, private loginService: LoginService) {
+    addIcons({ personCircleOutline });
+
     this.user = getAuth().currentUser
     onAuthStateChanged(getAuth(), (_user) => {
       this.user = _user;
@@ -54,7 +58,11 @@ export class UserComponent {
   }
 
 
-
+  manageAccount() {
+    this.popoverController.dismiss().then(() => {
+      this.router.navigateByUrl('account');
+    });
+  }
   logout() {
     this.loginService.logOut()
     this.popoverController.dismiss().then(() => {

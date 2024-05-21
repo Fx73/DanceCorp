@@ -1,19 +1,22 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from "../shared/header/header.component";
 import { IonicModule } from '@ionic/angular';
-import { LoginService } from 'src/app/services/login.service';
-import { NgIf } from '@angular/common';
-import { UserComponent } from 'src/app/shared/user/user.component';
+import { LoginService } from '../services/login.service';
+import { Router } from '@angular/router';
 import { User } from 'firebase/auth';
+import { UserComponent } from '../shared/user/user.component';
 
 @Component({
-  selector: 'app-account',
-  templateUrl: './account.component.html',
-  styleUrls: ['./account.component.scss', '../home.page.scss'],
+  selector: 'app-browse',
+  templateUrl: './account.page.html',
+  styleUrls: ['./account.page.scss'],
   standalone: true,
-  imports: [IonicModule, FormsModule, NgIf],
+  imports: [IonicModule, CommonModule, FormsModule, UserComponent, HeaderComponent]
 })
-export class AccountComponent {
+export class AccountPage {
+
   get user(): User | null {
     return UserComponent.user
   }
